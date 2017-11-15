@@ -15,19 +15,19 @@ public class Sieve {
      * @param prime - boolean array indicating primality
      */
     public static void printSieve(int[] results, boolean[] prime) {
-	    System.out.print("> ");
-	    char c = ' ';
+    	System.out.print("> ");
+	char c = ' ';
 
-	    // Just loop through the array and print the values.
-	    // Put a (T) after each one if it has been marked
-	    // prime; put a (F) after one if it has  been marked
-	    // composite (not prime).
-	    for (int j = 0; j < results.length;) {
-		c = prime[j] ? 'T' : 'F';
-		System.out.print(results[j] + "(" + c + ") ");
-		j++;
-	    }
-	    System.out.println();
+	// Just loop through the array and print the values.
+	// Put a (T) after each one if it has been marked
+	// prime; put a (F) after one if it has  been marked
+	// composite (not prime).
+	for (int j = 0; j < results.length;) {
+	    c = prime[j] ? 'T' : 'F';
+	    System.out.print(results[j] + "(" + c + ") ");
+	    j++;
+	}
+	System.out.println();
     }
 
     /**
@@ -120,29 +120,28 @@ public class Sieve {
     	    // Otherwise, loop through and look for any multiples of
     	    // it, which should now be marked false
     	    if (prime[ptr] == true) {
-        		int val = results[ptr]; // value pointed at
-        		int localPtr = ptr; // secondary pointer
-        		int counter = 2; // multiple counter
-        		int comp = 0; // computer value
-        		// System.out.println("Ptr = " + ptr + ",  val = " + val);
+       	        int val = results[ptr]; // value pointed at
+        	int localPtr = ptr; // secondary pointer
+        	int counter = 2; // multiple counter
+        	int comp = 0; // computer value
+        	// System.out.println("Ptr = " + ptr + ",  val = " + val);
+       		// Loop through the rest of the loop (starting past ptr,
+       		// which is what localPtr is equal to now) and look for
+       		// any multiples of that number.
 
-        		// Loop through the rest of the loop (starting past ptr,
-        		// which is what localPtr is equal to now) and look for
-        		// any multiples of that number.
+       		// These numbers are composite, so mark their prime[localPtr]
+       		// value as false.
 
-        		// These numbers are composite, so mark their prime[localPtr]
-        		// value as false.
-
-        		while (localPtr <= size) {
-        		    comp = val * counter;
-        		    // System.out.println("\t" + val + " * " + counter + " = " + comp);
-        		    localPtr = comp - 1;
-        		    if (localPtr < size) {
-        			// System.out.println("\tSetting " + results[localPtr] + " to F");
-        			prime[localPtr] = false;
-        		    }
-        		    counter++;
-        		}
+       		while (localPtr <= size) {
+       		    comp = val * counter;
+       		    // System.out.println("\t" + val + " * " + counter + " = " + comp);
+       		    localPtr = comp - 1;
+       		    if (localPtr < size) {
+       			// System.out.println("\tSetting " + results[localPtr] + " to F");
+       			prime[localPtr] = false;
+       		    }
+       		    counter++;
+       		}
     	    }
     	    ptr++;
     	}
